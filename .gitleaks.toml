@@ -1,0 +1,6 @@
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Throwaway RSA keys and JWTs generated for tests, and CocoaPods checksums"
+paths = ['''(^|/)fixtures/fixtures\.json$''', '''(^|/)Podfile\.lock$''']

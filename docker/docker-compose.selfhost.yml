@@ -1,0 +1,56 @@
+# Single-host deployment: Patchkite server + PostgreSQL + RustFS, behind a reverse proxy
+# or Cloudflare Tunnel that terminates HTTPS. Only the server port is exposed.
+# Fill in .env in the same folder (see https://patchkite.github.io/docs/self-hosting/production/).
+name: patchkite
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: patchkite
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: patchkite
+    volumes: [pgdata:/var/lib/postgresql/data, ./backups:/backups]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U patchkite"]
+      interval: 5s
+      retries: 10
+
+  s3:
+    image: rustfs/rustfs:latest
+    restart: unless-stopped
+    environment:
+      RUSTFS_ACCESS_KEY: ${S3_ACCESS_KEY_ID:?set S3_ACCESS_KEY_ID in .env}
+      RUSTFS_SECRET_KEY: ${S3_SECRET_ACCESS_KEY:?set S3_SECRET_ACCESS_KEY in .env}
+    command: /data
+    volumes: [s3data:/data]
+
+  server:
+    image: ${PATCHKITE_IMAGE:-ghcr.io/patchkite/server:latest}
+    restart: unless-stopped
+    depends_on:
+      postgres: { condition: service_healthy }
+      s3: { condition: service_started }
+    environment:
+      DATABASE_URL: postgres://patchkite:${POSTGRES_PASSWORD}@postgres:5432/patchkite
+      PUBLIC_URL: ${PUBLIC_URL:?set PUBLIC_URL in .env}
+      TRUST_PROXY: "true"
+      STORAGE_DRIVER: s3
+      S3_ENDPOINT: http://s3:9000
+      S3_BUCKET: patchkite
+      S3_ACCESS_KEY_ID: ${S3_ACCESS_KEY_ID}
+      S3_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY}
+      S3_FORCE_PATH_STYLE: "true"
+      # Storage is not exposed to the internet; packages are streamed through the server.
+      BLOB_DOWNLOAD_MODE: proxy
+      ALLOW_REGISTRATION: ${ALLOW_REGISTRATION:-false}
+    ports: ["${PATCHKITE_PORT:-3000}:3000"]
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/health"]
+      interval: 15s
+      retries: 5
+
+volumes:
+  pgdata:
+  s3data:

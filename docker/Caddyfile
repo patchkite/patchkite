@@ -1,0 +1,5 @@
+# Automatic HTTPS (Let's Encrypt) for the Patchkite server.
+{$PATCHKITE_DOMAIN} {
+	encode gzip
+	reverse_proxy server:3000
+}

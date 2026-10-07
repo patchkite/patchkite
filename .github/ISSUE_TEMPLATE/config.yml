@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://patchkite.github.io/docs/
+    about: Guides and reference for the server, CLI, and SDKs.
+  - name: Security vulnerability
+    url: https://github.com/patchkite/patchkite/security/advisories/new
+    about: Report vulnerabilities privately, not in a public issue.
