@@ -1,5 +1,5 @@
 # Build server + dashboard into a single image.
-FROM node:24-alpine AS build
+FROM node:26-alpine AS build
 RUN corepack enable
 WORKDIR /repo
 # Dependencies are fetched in a separate layer that only changes when the lockfile changes (cacheable).
@@ -12,7 +12,7 @@ RUN pnpm --filter @patchkite/server --config.inject-workspace-packages=true depl
   && cp -r apps/server/drizzle /out/server/drizzle \
   && mkdir -p /out/dashboard && (cp -r apps/dashboard/dist/. /out/dashboard/ || true)
 
-FROM node:24-alpine
+FROM node:26-alpine
 WORKDIR /app
 COPY --from=build /out/server /app
 COPY --from=build /out/dashboard /app/dashboard
