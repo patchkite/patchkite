@@ -1,0 +1,10 @@
+[Unit]
+Description=Patchkite server auto-update (pull the newest release image)
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+# Change User and WorkingDirectory to the account and folder that hold docker-compose.selfhost.yml and .env.
+User=ebelanja
+ExecStart=/home/ebelanja/patchkite/auto-update.sh
