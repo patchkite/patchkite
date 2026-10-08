@@ -7,4 +7,4 @@ Wants=network-online.target
 Type=oneshot
 # Change User and WorkingDirectory to the account and folder that hold docker-compose.selfhost.yml and .env.
 User=ebelanja
-ExecStart=/home/ebelanja/patchkite/auto-update.sh
+ExecStart=/home/ebelanja/patchkite/docker/auto-update.sh
