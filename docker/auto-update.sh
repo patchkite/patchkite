@@ -3,6 +3,7 @@
 # than the running one, hand it to deploy.sh (pull → backup → restart → health check → rollback on failure).
 # Run by patchkite-update.timer (see systemd/). Needs no inbound access, so it works on a VM behind a VPN.
 # Install (once, on the host):
+#   echo COMPOSE_FILE=docker-compose.selfhost.yml >> .env   # deploy.sh runs plain `docker compose`
 #   sudo cp docker/systemd/patchkite-update.* /etc/systemd/system/   # edit User and path first
 #   sudo systemctl daemon-reload && sudo systemctl enable --now patchkite-update.timer
 #   journalctl -u patchkite-update.service   # see what it did
