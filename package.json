@@ -10,7 +10,7 @@
     "fixtures": "pnpm --filter @patchkite/shared build && node fixtures/generate.mjs"
   },
   "devDependencies": {
-    "turbo": "^2.11.5",
+    "turbo": "^2.11.7",
     "typescript": "^7.0.2"
   },
   "license": "MIT",
