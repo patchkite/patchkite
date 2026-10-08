@@ -11,6 +11,10 @@ updates:
     directory: /docker
     schedule:
       interval: weekly
+    ignore:
+      # Stay on the Node LTS base image; bump the major version by hand when a new LTS ships.
+      - dependency-name: node
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: github-actions
     directory: /
     schedule:
