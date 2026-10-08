@@ -1,6 +1,6 @@
 # Production deployment: Caddy (HTTPS) + Patchkite server + PostgreSQL.
 # Storage uses external S3 (AWS S3 / Cloudflare R2) configured in docker/.env.
-# Full guide: https://patchkite.github.io/docs/self-hosting/production/
+# Full guide: https://docs.patchkite.com/self-hosting/production/
 name: patchkite
 
 services:

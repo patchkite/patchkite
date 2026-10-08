@@ -12,4 +12,4 @@ Security fixes are released for the latest minor version of each Patchkite packa
 
 ## Security model
 
-How Patchkite protects updates — code signing, hash verification, and the risks we accept — is described in the [security model](https://patchkite.github.io/docs/reference/security/).
+How Patchkite protects updates — code signing, hash verification, and the risks we accept — is described in the [security model](https://docs.patchkite.com/reference/security/).

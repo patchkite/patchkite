@@ -26,7 +26,7 @@ pnpm turbo run typecheck test build
 
 ## Protocol changes
 
-The package hash, signature, diff, and bsdiff formats are shared with the CLI and SDKs and are specified in the [package format reference](https://patchkite.github.io/docs/reference/package-format/). If you change them:
+The package hash, signature, diff, and bsdiff formats are shared with the CLI and SDKs and are specified in the [package format reference](https://docs.patchkite.com/reference/package-format/). If you change them:
 
 1. Update `packages/shared` and the specification.
 2. Regenerate the fixtures with `pnpm fixtures` and commit them.

@@ -1,6 +1,6 @@
 # Single-host deployment: Patchkite server + PostgreSQL + RustFS, behind a reverse proxy
 # or Cloudflare Tunnel that terminates HTTPS. Only the server port is exposed.
-# Fill in .env in the same folder (see https://patchkite.github.io/docs/self-hosting/production/).
+# Fill in .env in the same folder (see https://docs.patchkite.com/self-hosting/production/).
 name: patchkite
 
 services:

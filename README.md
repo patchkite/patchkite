@@ -5,7 +5,7 @@
 <p align="center">Self-hosted over-the-air updates for React Native and Flutter.</p>
 
 <p align="center">
-  <a href="https://patchkite.github.io/docs/">Documentation</a> ·
+  <a href="https://docs.patchkite.com/">Documentation</a> ·
   <a href="https://github.com/patchkite/cli">CLI</a> ·
   <a href="https://github.com/patchkite/react-native">React Native SDK</a> ·
   <a href="https://github.com/patchkite/flutter">Flutter SDK</a>
@@ -36,7 +36,7 @@ npm install -g @patchkite/cli
 patchkite register http://localhost:3000
 ```
 
-Continue with the [quickstart](https://patchkite.github.io/docs/start/quickstart/). For a production setup with HTTPS and S3/R2, see [Deploy to production](https://patchkite.github.io/docs/self-hosting/production/). The server image is published as `ghcr.io/patchkite/server`.
+Continue with the [quickstart](https://docs.patchkite.com/start/quickstart/). For a production setup with HTTPS and S3/R2, see [Deploy to production](https://docs.patchkite.com/self-hosting/production/). The server image is published as `ghcr.io/patchkite/server`.
 
 ## Repository layout
 
