@@ -20,13 +20,13 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "semver": "^7.8.5",
-    "zod": "^4.6.6"
+    "semver": "^7.8.6",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@types/node": "latest",
     "@types/semver": "latest",
     "typescript": "^7.0.2",
-    "vitest": "^5.0.3"
+    "vitest": "^5.1.0"
   }
 }
